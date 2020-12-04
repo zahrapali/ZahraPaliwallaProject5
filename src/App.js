@@ -10,21 +10,6 @@ class App extends Component {
     this.state = {
       proposals: [],
       userInput: "",
-      // {
-      // name: 'testClientName0',
-      // status: 'approved',
-      // filePath: 'www.googledocs.com'
-      // },
-      // {
-      //   name: 'testClientName1',
-      //   status: 'not-approved',
-      //   filePath: 'www.googledocs.com'
-      // },
-      // {
-      //   name: 'testClientName2',
-      //   status: 'not-approved',
-      //   filePath: 'www.googledocs.com'
-      // }
     };
   }
 
@@ -62,10 +47,6 @@ class App extends Component {
   }
 
   //////////////////////////////////////////////////////
-
-  // if we dont have handleInputChange we wouldnt be able get the value
-
-  //
 
   handleSubmit = (event) => {
     event.preventDefault();
