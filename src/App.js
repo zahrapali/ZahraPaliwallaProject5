@@ -1,15 +1,15 @@
-import './App.css';
-import { Component } from 'react';
-import Proposal from './Proposal';
-import firebase from './firebase.js';
-
+import "./App.css";
+import { Component } from "react";
+import Proposal from "./Proposal";
+import firebase from "./firebase.js";
+import Footer from "./Footer";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       proposals: [],
-      userInput: ''
+      userInput: "",
       // {
       // name: 'testClientName0',
       // status: 'approved',
@@ -25,8 +25,7 @@ class App extends Component {
       //   status: 'not-approved',
       //   filePath: 'www.googledocs.com'
       // }
-
-    }
+    };
   }
 
   //////////////////////////////////////////////////////////////////////////
@@ -34,81 +33,81 @@ class App extends Component {
 
   componentDidMount() {
     // made a reference to the database
-    const dbRef = firebase.database().ref()
+    const dbRef = firebase.database().ref();
     // get data from the database
-    dbRef.on('value', (data) => {
+    dbRef.on("value", (data) => {
       const firebaseDataObj = data.val();
       console.log(firebaseDataObj);
 
-      // make a new empty array 
+      // make a new empty array
       let proposalsArray = [];
       //use a for in loop to loop through the object
       for (let propertyKey in firebaseDataObj) {
-      
         const formattedObj = {
           id: propertyKey,
           name: firebaseDataObj[propertyKey].name,
           status: firebaseDataObj[propertyKey].status,
-          filePath: firebaseDataObj[propertyKey].filePath
+          filePath: firebaseDataObj[propertyKey].filePath,
         };
 
-        proposalsArray.push(formattedObj)
-
-
+        proposalsArray.push(formattedObj);
       }
       //extracting the key and value of the object
       // formate it to the way we want it
-      // push this new item into the empty array 
+      // push this new item into the empty array
       console.log(proposalsArray);
 
       this.setState({
-        proposals: proposalsArray
+        proposals: proposalsArray,
       });
-    })
+    });
   }
-
 
   //////////////////////////////////////////////////////
 
   // if we dont have handleInputChange we wouldnt be able get the value
 
+  //
+
   handleSubmit = (event) => {
     event.preventDefault();
+    event.target.reset();
+
+    console.log(event.target);
+    const inputObject = {
+      name: event.target[0].value,
+      status: event.target[1].value,
+      filePath: event.target[2].value,
+    };
     const dbRef = firebase.database().ref();
-    // dbRef.push(this.state.userInput)
-    // const name = $("#newClient").val();
-    // const status = $("#newStatus").val();
-    // const link = $("#newFile").val();
+    dbRef.push(inputObject);
+  };
 
-
-    // dbRef.push({
-    //   // "id": id,
-    //   "name": name,
-    //   "status": status, 
-    //   "link": link,
-    // })
-
-    
-
-  }
   handleInputChange = (event) => {
     console.log(event.target.value);
+
     this.setState({
-      userInput: event.target.value
-    })
+      userInput: event.target.value,
+    });
+  };
 
-
-  }
   render() {
     return (
       <div>
+        <div className="wrapper">
+          <header>
+            <h1>Dear Razi,</h1>
+            <h2>This is just for you.</h2>
+            <h2>You picky fuck.</h2>
+          </header>
+          <section></section>
 
-        <h1>Dear Razi,</h1>
-        <h2>This is just for you. You picky fuck.</h2>
-
-
-        {
-          this.state.proposals.map((eachProposal) => {
+          <ul className="proposal">
+            <li>Name of Client</li>
+            <li>Status</li>
+            <li>File Link</li>
+          </ul>
+          {this.state.proposals.map((eachProposal) => {
             return (
               <Proposal
                 key={eachProposal.propertyKey}
@@ -116,39 +115,50 @@ class App extends Component {
                 status={eachProposal.status}
                 filePath={eachProposal.filePath}
               />
-            )
-          })
-        }
+            );
+          })}
+          <form id="form" onSubmit={this.handleSubmit}>
+            <div>
+              <label htmlFor="name">Client Name:</label>
+              <input
+                type="text"
+                placeholder="Maybe one day this will be a drop down menu, Today is not that day!"
+                id="name"
+                tabindex="1"
+                required
+                onChange={this.handleInputChange}
+              />
+            </div>
 
+            <div>
+              <label htmlFor="status">Status:</label>
+              <input
+                type="text"
+                placeholder="Approved or Not Approved! No judgment. Some Judgement."
+                id="status"
+                tabindex="2"
+                required
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="filePath">File Link:</label>
+              <input
+                placeholder="File Link Razi Pazz"
+                type="link"
+                tabindex="3"
+                id="filePath"
+                required
+                onChange={this.handleInputChange}
+              />
+            </div>
 
-
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="newClient" >Client Name</label>
-          <input
-            type="text"
-            id="newClient"
-            onChange={this.handleInputChange}
-          />
-
-          <label htmlFor="newStatus" >Approved or Not Approved. It's simple razi. you dummy.</label>
-          <input
-            type="text"
-            id="newStatus"
-            onChange={this.handleInputChange}
-          />
-
-          <label htmlFor="newFile">File Link:</label>
-          <input
-            type="text"
-            id="newFile"
-            onChange={this.handleInputChange}
-          />
-
-          <button>submit</button>
-        </form>
-
-
-
+            <button id="submit" tabindex="4" type="submit">
+              submit
+            </button>
+          </form>
+        </div>
+        <Footer />
       </div>
     );
   }

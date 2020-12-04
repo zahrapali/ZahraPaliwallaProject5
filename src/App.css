@@ -1,7 +1,111 @@
-.proposal{
-  display: flex;
-  
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&family=Shrikhand&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f4d786;
 }
-p{ 
+
+.proposal {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f2f2f2;
+  border-radius: 0px 66px 66px 66px;
+  margin: 5px;
+  box-shadow: 10px 10px #3f3d56;
+}
+h1 {
+  font-family: "Shrikhand", cursive;
+  font-size: 100px;
+  color: white;
+  text-shadow: 8px 6px 0px #3f3d56;
+  letter-spacing: 7px;
+  margin: 0px;
+}
+
+h2 {
+  font-size: 50px;
+  margin: 0px;
+  color: #3f3d56;
+}
+p,
+li {
   padding: 10px;
+  font-size: 18px;
+}
+form {
+  background-color: #f2f2f2;
+  padding: 50px 50px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 20px 20px #3f3d56;
+  border-radius: 0px 66px 66px 66px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+label {
+  font-size: 18px;
+  padding: 20px;
+  width: 100%;
+  color: #3f3d56;
+}
+
+input {
+  background: white;
+  border: none;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 20px;
+  padding: 20px;
+  width: 93%;
+}
+
+button {
+  border: 2px #3f3d56 solid;
+  background-color: #f2f2f2;
+  font-size: 18px;
+  box-shadow: 10px 10px #3f3d56;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+}
+button:hover,
+button:focus {
+  color: #f2f2f2;
+  box-shadow: 10px 10px #3f3d56;
+  background-color: #f4d786;
+}
+
+section {
+  height: 70vh;
+  background-image: url(./undraw_folder_39kl.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+li {
+  list-style-type: none;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #3f3d56;
+}
+.copyright {
+  color: #f2f2f2;
+  text-align: center;
+}
+
+button:active {
+  top: 3px;
+  left: 3px;
+  box-shadow: 3px 3px white;
+}
+
+@media only screen and (max-width: 600px) {
+  section {
+    display: none;
   }
+}
