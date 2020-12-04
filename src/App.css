@@ -4,7 +4,14 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #f4d786;
 }
-
+ul {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f2f2f2;
+  border-radius: 0px 66px 66px 66px;
+  margin: 5px;
+  box-shadow: 10px 10px #3f3d56;
+}
 .proposal {
   display: flex;
   justify-content: space-around;
@@ -12,6 +19,7 @@ body {
   border-radius: 0px 66px 66px 66px;
   margin: 5px;
   box-shadow: 10px 10px #3f3d56;
+  padding-left: 40px;
 }
 .proposal p,
 .proposal li {

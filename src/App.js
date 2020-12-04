@@ -102,7 +102,7 @@ class App extends Component {
           </header>
           <section></section>
 
-          <ul className="proposal">
+          <ul>
             <li>Name of Client</li>
             <li>Status</li>
             <li>File Link</li>
