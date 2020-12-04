@@ -37,7 +37,6 @@ class App extends Component {
     // get data from the database
     dbRef.on("value", (data) => {
       const firebaseDataObj = data.val();
-      console.log(firebaseDataObj);
 
       // make a new empty array
       let proposalsArray = [];
@@ -55,7 +54,6 @@ class App extends Component {
       //extracting the key and value of the object
       // formate it to the way we want it
       // push this new item into the empty array
-      console.log(proposalsArray);
 
       this.setState({
         proposals: proposalsArray,
@@ -73,7 +71,6 @@ class App extends Component {
     event.preventDefault();
     event.target.reset();
 
-    console.log(event.target);
     const inputObject = {
       name: event.target[0].value,
       status: event.target[1].value,
@@ -84,8 +81,6 @@ class App extends Component {
   };
 
   handleInputChange = (event) => {
-    console.log(event.target.value);
-
     this.setState({
       userInput: event.target.value,
     });

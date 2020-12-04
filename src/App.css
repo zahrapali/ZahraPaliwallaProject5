@@ -25,6 +25,7 @@ ul {
 ul li {
   flex: 1;
   padding-left: 10px;
+  text-align: center;
 }
 h1 {
   font-family: "Shrikhand", cursive;
