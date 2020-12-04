@@ -13,6 +13,9 @@ body {
   margin: 5px;
   box-shadow: 10px 10px #3f3d56;
 }
+.proposal p {
+  flex: 1;
+}
 h1 {
   font-family: "Shrikhand", cursive;
   font-size: 100px;
