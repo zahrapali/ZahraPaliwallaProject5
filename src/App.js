@@ -50,7 +50,7 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    event.target.reset();
+    
 
     const inputObject = {
       name: event.target[0].value,
